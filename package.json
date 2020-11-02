@@ -1,0 +1,22 @@
+{
+  "name": "lol_ds",
+  "version": "1.0.0",
+  "description": "Bot of League of Legends",
+  "main": "init/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GastonTH/LoL_Ds.js.git"
+  },
+  "author": "Gaston Tomas Huete",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GastonTH/LoL_Ds.js/issues"
+  },
+  "homepage": "https://github.com/GastonTH/LoL_Ds.js#readme",
+  "dependencies": {
+    "discord.js": "^12.4.1"
+  }
+}
