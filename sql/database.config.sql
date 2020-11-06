@@ -23,6 +23,20 @@ CREATE TABLE w_ficha(
     destreza INT(100) NOT NULL,
     user_id INT, 
     created_at timestamp NOT NULL DEFAULT current_timestamp,
-    CONSTRAINT key_user FOREIGN KEY (user_id) REFERENCES Usuarios(id),
+    CONSTRAINT key_user FOREIGN KEY (user_id) REFERENCES w_usuarios(id),
     PRIMARY KEY (id)
 ); 
+
+CREATE TABLE w_inventario(
+     id INT NOT NULL AUTO_INCREMENT,
+     nombre VARCHAR(255) NOT NULL,
+     ad INT(100) NOT NULL,
+     ap INT(100) NOT NULL,
+     hp INT(100) NOT NULL,
+     intg INT(100) NOT NULL,
+     cantidad INT(100) NOT NULL,
+     descripcion VARCHAR(255) NOT NULL,
+     ficha_id INT,
+     CONSTRAINT key_ficha FOREIGN KEY (ficha_id) REFERENCES w_inventario(id),
+     PRIMARY KEY(id)
+);
