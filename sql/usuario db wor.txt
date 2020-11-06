@@ -1,0 +1,2 @@
+user: admin_wor_bot
+pass: mD7UUT^xJqOk
