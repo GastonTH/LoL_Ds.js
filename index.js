@@ -1,15 +1,24 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+//fichero que contiene el tokken
 const config = require('./config.json');
-
-//devuelve la conexion ya realizada
-const connection = require("./database/db.connect");
-
-//require de la base de datos--
+//mysql
 const mysql = require('mysql');
-//-----------------------------
 
-//si el bot esta listo... -->
+
+function connectDB() {
+
+    const connect = mysql.createConnection({
+        host: 'localhost',
+        user: 'dbWor',
+        password: '123asd123asda',
+        database: 'wor_bot_db'
+    })
+
+    return connect;
+};
+
+//cuando el bot esta listo -->
 client.on('ready', async() => {
     client.user.setStatus('online');
     console.log(`Bot ${client.user.tag} is ready and is ${client.user.presence.status}`);
@@ -17,7 +26,7 @@ client.on('ready', async() => {
 
 //recibiendo mensajes del servidor y async para que de igual lo que tarde en contestar
 client.on('message', async message => {
-    console.log(message.content);
+    //console.log(message.content);
 
     if (message.content === "ping") {
         //metodo reply sirve para responder
@@ -36,10 +45,7 @@ client.on('message', async message => {
 
     if (message.content.includes("!connect")) {
 
-        const ficha = await connection.query('SELECT * FROM wor_bot_db');
-        console.log(ficha);
-
-        //message.channel.send("Con que conectando con la base de datos eeeeeeee ¬-¬");
+        console.log(message);
     }
 
     //mensajes embebidos
@@ -49,11 +55,13 @@ client.on('message', async message => {
         message.channel.send(embed);
     }
 
-    //intento de conversaciones del lol XD
-    /*
-    if (message.content.includes("!auto")) {
-      message.channel.send("!auto");
-    }*/
+    if (message.content === '(Wor)registro') {
+        //comprovacion del usuario en la base de datos
+        const con = connectDB();
+        console.log(con);
+    }
+
+
 
 });
 

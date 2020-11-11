@@ -36,7 +36,13 @@ CREATE TABLE w_inventario(
      intg INT(100) NOT NULL,
      cantidad INT(100) NOT NULL,
      descripcion VARCHAR(255) NOT NULL,
-     ficha_id INT,
-     CONSTRAINT key_ficha FOREIGN KEY (ficha_id) REFERENCES w_inventario(id),
      PRIMARY KEY(id)
+);
+
+CREATE TABLE w_tiene(
+     id_inventario INT,
+     CONSTRAINT key_inventario FOREIGN KEY (id_inventario) REFERENCES w_inventario(id),
+     id_ficha INT,
+     CONSTRAINT key_ficha FOREIGN KEY (id_ficha) REFERENCES w_ficha(id),
+     CONSTRAINT idInvIdFicha PRIMARY KEY (id_ficha, id_inventario)
 );
